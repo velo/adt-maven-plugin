@@ -157,11 +157,11 @@ public abstract class DependencyHelper {
     //
     //-------------------------------------------------------------------------
 
-    abstract protected String getDefaultArtifactId();
+    abstract protected String getDefaultArtifactId() throws MojoFailureException;
 
-    abstract protected String getDefaultGroupId();
+    abstract protected String getDefaultGroupId() throws MojoFailureException;
 
-    abstract protected String getDefaultVersion();
+    abstract protected String getDefaultVersion()  throws MojoFailureException;
 
-    abstract protected String getDefaultPackaging();
+    abstract protected String getDefaultPackaging()  throws MojoFailureException;
 }

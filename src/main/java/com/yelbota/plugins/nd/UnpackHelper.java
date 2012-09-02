@@ -18,6 +18,7 @@ package com.yelbota.plugins.nd;
 import com.yelbota.plugins.nd.utils.UnpackMethod;
 import org.apache.maven.artifact.Artifact;
 import org.apache.maven.plugin.MojoFailureException;
+import org.apache.maven.plugin.logging.Log;
 
 import java.io.File;
 import java.io.IOException;
@@ -26,7 +27,7 @@ import java.util.Map;
 /**
  * @author Aleksey Fomkin
  */
-public abstract class UnpackHelper {
+public class UnpackHelper {
 
     /**
      * @author Aleksey Fomkin
@@ -44,12 +45,19 @@ public abstract class UnpackHelper {
     //
     //-------------------------------------------------------------------------
 
+    public void unpack(File directory, Artifact artifact,
+                       Map<String, UnpackMethod> unpackMethods) throws UnpackHelperException {
+
+        unpack(directory, artifact, unpackMethods, null);
+    }
+
     /**
      * Unpack `artifact` to `directory`.
      * @throws UnpackHelperException
      */
     public void unpack(File directory, Artifact artifact,
-                       Map<String, UnpackMethod> unpackMethods) throws UnpackHelperException {
+                       Map<String, UnpackMethod> unpackMethods,
+                       Log log) throws UnpackHelperException {
 
         if (directory.exists()) {
 
@@ -61,8 +69,9 @@ public abstract class UnpackHelper {
         } else {
             try {
                 logUnpacking();
+                directory.mkdirs();
                 UnpackMethod unpackMethod = unpackMethods.get(artifact.getType());
-                unpackMethod.unpack(artifact.getFile(), directory);
+                unpackMethod.unpack(artifact.getFile(), directory, log);
             } catch (IOException e) {
                 throw new UnpackHelperException("Can't unpack " + artifact, e);
             } catch (UnpackMethod.UnpackMethodException e) {
