@@ -30,6 +30,7 @@ public class DefaultUnpackMethods extends HashMap<String, UnpackMethod> {
 
         put("zip", new ZipUnpackMethod(plexusLogger));
         put("tgz", new TarGZipUnpackMethod(plexusLogger));
+        put("tar.gz", new TarGZipUnpackMethod(plexusLogger));
         put("tbz2", new TarBZip2UnpackMethod());
     }
 }
