@@ -15,6 +15,7 @@
  */
 package com.yelbota.plugins.nd;
 
+import org.sonatype.aether.spi.connector.ArtifactDownload;
 import com.yelbota.plugins.nd.utils.UnpackMethod;
 import org.apache.maven.artifact.Artifact;
 import org.apache.maven.plugin.MojoFailureException;
@@ -51,31 +52,59 @@ public class UnpackHelper {
         unpack(directory, artifact, unpackMethods, null);
     }
 
+    public void unpack(File directory, Artifact artifact,
+                       Map<String, UnpackMethod> unpackMethods,
+                       Log log) throws UnpackHelperException {
+        unpack(directory, artifact.getType(), artifact.getFile(), unpackMethods, log);
+    }
+
+    public void unpack(File directory, ArtifactDownload artifactDownload,
+                       Map<String, UnpackMethod> unpackMethods) throws UnpackHelperException {
+
+        unpack(directory, artifactDownload, unpackMethods, null);
+    }
+
+    public void unpack(File directory, ArtifactDownload artifactDownload,
+                       Map<String, UnpackMethod> unpackMethods,
+                       Log log) throws UnpackHelperException {
+        org.sonatype.aether.artifact.Artifact artifact = artifactDownload.getArtifact();
+        if (artifact != null) {
+            unpack(directory, artifact.getExtension(), artifactDownload.getFile(), unpackMethods, log);
+        } else {
+            new MojoFailureException(artifactDownload + " has no valid artifact reference.");
+        }
+    }
+
     /**
      * Unpack `artifact` to `directory`.
      * @throws UnpackHelperException
      */
-    public void unpack(File directory, Artifact artifact,
+    private void unpack(File directory, String artifactType, File artifactFile,
                        Map<String, UnpackMethod> unpackMethods,
                        Log log) throws UnpackHelperException {
 
         if (directory.exists()) {
+            if (log != null) log.info("dir '"+directory+"' exists");
 
             if (directory.isDirectory()) {
+                if (log != null) log.info("already unpacked?");
                 logAlreadyUnpacked();
             } else {
                 new MojoFailureException(directory.getAbsolutePath() + ", which must be directory for unpacking, now is file");
             }
         } else {
+            if (log != null) log.info("dir '"+directory+"' does not exist");
             try {
                 logUnpacking();
                 directory.mkdirs();
-                UnpackMethod unpackMethod = unpackMethods.get(artifact.getType());
-                unpackMethod.unpack(artifact.getFile(), directory, log);
+                if (log != null) log.info("getting method for artifact type " + artifactType);
+                UnpackMethod unpackMethod = unpackMethods.get(artifactType);
+                if (log != null) log.info("artifact file: " + artifactFile);
+                unpackMethod.unpack(artifactFile, directory, log);
             } catch (IOException e) {
-                throw new UnpackHelperException("Can't unpack " + artifact, e);
+                throw new UnpackHelperException("Can't unpack " + artifactFile, e);
             } catch (UnpackMethod.UnpackMethodException e) {
-                throw new UnpackHelperException("Can't unpack " + artifact, e);
+                throw new UnpackHelperException("Can't unpack " + artifactFile, e);
             }
         }
     }
