@@ -50,22 +50,4 @@
         </plugins>
     </build>
 
-    <repositories>
-        <repository>
-            <id>yelbota-dropbox-repo</id>
-            <url>http://dl.dropboxusercontent.com/u/36020926/maven/</url>
-            <snapshots><enabled>false</enabled></snapshots>
-            <releases><enabled>true</enabled></releases>
-        </repository>
-    </repositories>
-
-    <pluginRepositories>
-        <pluginRepository>
-            <id>yelbota-dropbox-repo</id>
-            <url>http://dl.dropboxusercontent.com/u/36020926/maven/</url>
-            <snapshots><enabled>false</enabled></snapshots>
-            <releases><enabled>true</enabled></releases>
-        </pluginRepository>    
-    </pluginRepositories>
-
 </project>
