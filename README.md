@@ -1,4 +1,4 @@
-[![Build Status](https://secure.travis-ci.org/yelbota/adt-maven-plugin.png?branch=master)](http://travis-ci.org/yelbota/adt-maven-plugin)
+[![Build Status](https://travis-ci.org/velo/adt-maven-plugin.svg?branch=master)](https://travis-ci.org/velo/adt-maven-plugin)
 
 Build Adobe AIR applications with your Maven!
 ================================================
