@@ -1,11 +1,11 @@
 /**
- * Copyright (C) 2012 https://github.com/yelbota/adt-maven-plugin
+ * Copyright (C) 2017 Marvin Herman Froeder (marvin@marvinformatics.com)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ *         http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -139,20 +139,17 @@ public class ApplicationDescriptorModelTest {
         Assert.assertEquals(
                 xpath.compile("//versionLabel/text()").evaluate(doc),
                 c.getVersionLabel(),
-                "versionLabel should be " + c.getVersionLabel()
-        );
+                "versionLabel should be " + c.getVersionLabel());
 
         Assert.assertEquals(
                 xpath.compile("//versionNumber/text()").evaluate(doc),
                 c.getVersionNumber(),
-                "versionNumber should be " + c.getVersionNumber()
-        );
+                "versionNumber should be " + c.getVersionNumber());
 
         Assert.assertEquals(
                 xpath.compile("//initialWindow/content/text()").evaluate(doc),
                 c.getContent(),
-                "content should be " + c.getContent()
-        );
+                "content should be " + c.getContent());
 
         testDomExtensions(doc, c);
     }
@@ -171,8 +168,7 @@ public class ApplicationDescriptorModelTest {
             if (c.getExtensionIds() == null || c.getExtensionIds().size() < 1) {
 
                 Assert.assertTrue(nodes.getLength() == 0);
-            }
-            else {
+            } else {
 
                 List<String> modelExtensions = c.getExtensionIds();
                 List<Text> filteredNodes = new ArrayList<Text>();

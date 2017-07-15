@@ -1,11 +1,11 @@
 /**
- * Copyright (C) 2012 https://github.com/yelbota/adt-maven-plugin
+ * Copyright (C) 2017 Marvin Herman Froeder (marvin@marvinformatics.com)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ *         http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -47,26 +47,26 @@ public class UnpackHelper {
     //-------------------------------------------------------------------------
 
     public void unpack(File directory, Artifact artifact,
-                       Map<String, UnpackMethod> unpackMethods) throws UnpackHelperException {
+            Map<String, UnpackMethod> unpackMethods) throws UnpackHelperException {
 
         unpack(directory, artifact, unpackMethods, null);
     }
 
     public void unpack(File directory, Artifact artifact,
-                       Map<String, UnpackMethod> unpackMethods,
-                       Log log) throws UnpackHelperException {
+            Map<String, UnpackMethod> unpackMethods,
+            Log log) throws UnpackHelperException {
         unpack(directory, artifact.getType(), artifact.getFile(), unpackMethods, log);
     }
 
     public void unpack(File directory, ArtifactDownload artifactDownload,
-                       Map<String, UnpackMethod> unpackMethods) throws UnpackHelperException {
+            Map<String, UnpackMethod> unpackMethods) throws UnpackHelperException {
 
         unpack(directory, artifactDownload, unpackMethods, null);
     }
 
     public void unpack(File directory, ArtifactDownload artifactDownload,
-                       Map<String, UnpackMethod> unpackMethods,
-                       Log log) throws UnpackHelperException {
+            Map<String, UnpackMethod> unpackMethods,
+            Log log) throws UnpackHelperException {
         org.sonatype.aether.artifact.Artifact artifact = artifactDownload.getArtifact();
         if (artifact != null) {
             unpack(directory, artifact.getExtension(), artifactDownload.getFile(), unpackMethods, log);
@@ -80,11 +80,11 @@ public class UnpackHelper {
      * @throws UnpackHelperException
      */
     private void unpack(File directory, String artifactType, File artifactFile,
-                       Map<String, UnpackMethod> unpackMethods,
-                       Log log) throws UnpackHelperException {
+            Map<String, UnpackMethod> unpackMethods,
+            Log log) throws UnpackHelperException {
 
         if (directory.exists()) {
-            if (log != null) log.info("dir '"+directory+"' exists");
+            if (log != null) log.info("dir '" + directory + "' exists");
 
             if (directory.isDirectory()) {
                 if (log != null) log.info("already unpacked?");
@@ -93,7 +93,7 @@ public class UnpackHelper {
                 new MojoFailureException(directory.getAbsolutePath() + ", which must be directory for unpacking, now is file");
             }
         } else {
-            if (log != null) log.info("dir '"+directory+"' does not exist");
+            if (log != null) log.info("dir '" + directory + "' does not exist");
             try {
                 logUnpacking();
                 directory.mkdirs();

@@ -1,11 +1,11 @@
 /**
- * Copyright (C) 2012 https://github.com/yelbota/adt-maven-plugin
+ * Copyright (C) 2017 Marvin Herman Froeder (marvin@marvinformatics.com)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ *         http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -97,8 +97,8 @@ public abstract class DependencyHelper {
      * @throws MojoFailureException
      */
     public Artifact resolve(List<Artifact> pluginArtifacts, RepositorySystem repositorySystem,
-                            ArtifactRepository localRepository,
-                            List<ArtifactRepository> remoteRepositories) throws MojoFailureException {
+            ArtifactRepository localRepository,
+            List<ArtifactRepository> remoteRepositories) throws MojoFailureException {
 
         Artifact artifact = null;
 
@@ -129,8 +129,7 @@ public abstract class DependencyHelper {
                         getDefaultArtifactId(),
                         getDefaultVersion(),
                         getDefaultPackaging(),
-                        getDefaultClassifier()
-                );
+                        getDefaultClassifier());
 
                 ArtifactResolutionRequest request = new ArtifactResolutionRequest();
 
@@ -161,7 +160,7 @@ public abstract class DependencyHelper {
 
     abstract protected String getDefaultGroupId() throws MojoFailureException;
 
-    abstract protected String getDefaultVersion()  throws MojoFailureException;
+    abstract protected String getDefaultVersion() throws MojoFailureException;
 
-    abstract protected String getDefaultPackaging()  throws MojoFailureException;
+    abstract protected String getDefaultPackaging() throws MojoFailureException;
 }

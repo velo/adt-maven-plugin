@@ -1,11 +1,11 @@
 /**
- * Copyright (C) 2012 https://github.com/yelbota/adt-maven-plugin
+ * Copyright (C) 2017 Marvin Herman Froeder (marvin@marvinformatics.com)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ *         http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -97,7 +97,7 @@ public class PackageAdtMojoTest {
         File dir = mojo.prepareAneDir();
 
         List<String> dirList = Arrays.asList(dir.list());
-        String[] pattern = new String[]{"myExt1-1.0.ane", "myExt2-1.1.ane"};
+        String[] pattern = new String[] { "myExt1-1.0.ane", "myExt2-1.1.ane" };
 
         Assert.assertTrue(dir.exists());
 
@@ -188,22 +188,22 @@ public class PackageAdtMojoTest {
     // TODO test target null
     // TODO test includes null
 
-/*
+    /*
     @Test
     public void validateConfigurationTestApk() {
-
+    
         PackageAdtMojo mojo = new PackageAdtMojo();
-
+    
         mojo.target = "apk";
     }
-
+    
     @Test
     public void validateConfigurationTestIpa() {
-
+    
         PackageAdtMojo mojo = new PackageAdtMojo();
-
+    
         mojo.target = "airi";
     }
-*/
+    */
 
 }

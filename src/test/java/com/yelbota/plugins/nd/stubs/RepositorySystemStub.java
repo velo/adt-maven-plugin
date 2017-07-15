@@ -1,11 +1,11 @@
 /**
- * Copyright (C) 2012 https://github.com/yelbota/adt-maven-plugin
+ * Copyright (C) 2017 Marvin Herman Froeder (marvin@marvinformatics.com)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ *         http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -41,67 +41,67 @@ public class RepositorySystemStub implements RepositorySystem {
 
     @Override
     public Artifact createArtifact(String groupId, String artifactId, String version, String packaging) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return null; //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override
     public Artifact createArtifact(String groupId, String artifactId, String version, String scope, String type) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return null; //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override
     public Artifact createProjectArtifact(String groupId, String artifactId, String version) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return null; //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override
     public Artifact createArtifactWithClassifier(String groupId, String artifactId, String version, String type, String classifier) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return null; //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override
     public Artifact createPluginArtifact(Plugin plugin) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return null; //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override
     public Artifact createDependencyArtifact(Dependency dependency) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return null; //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override
     public ArtifactRepository buildArtifactRepository(Repository repository) throws InvalidRepositoryException {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return null; //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override
     public ArtifactRepository createDefaultRemoteRepository() throws InvalidRepositoryException {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return null; //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override
     public ArtifactRepository createDefaultLocalRepository() throws InvalidRepositoryException {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return null; //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override
     public ArtifactRepository createLocalRepository(File localRepository) throws InvalidRepositoryException {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return null; //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override
     public ArtifactRepository createArtifactRepository(String id, String url, ArtifactRepositoryLayout repositoryLayout, ArtifactRepositoryPolicy snapshots, ArtifactRepositoryPolicy releases) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return null; //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override
     public List<ArtifactRepository> getEffectiveRepositories(List<ArtifactRepository> repositories) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return null; //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override
     public Mirror getMirror(ArtifactRepository repository, List<Mirror> mirrors) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return null; //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override
@@ -136,7 +136,7 @@ public class RepositorySystemStub implements RepositorySystem {
 
     @Override
     public ArtifactResolutionResult resolve(ArtifactResolutionRequest request) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return null; //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override
@@ -145,7 +145,8 @@ public class RepositorySystemStub implements RepositorySystem {
     }
 
     @Override
-    public void retrieve(ArtifactRepository repository, File destination, String remotePath, ArtifactTransferListener transferListener) throws ArtifactTransferFailedException, ArtifactDoesNotExistException {
+    public void retrieve(ArtifactRepository repository, File destination, String remotePath, ArtifactTransferListener transferListener)
+            throws ArtifactTransferFailedException, ArtifactDoesNotExistException {
         //To change body of implemented methods use File | Settings | File Templates.
     }
 }

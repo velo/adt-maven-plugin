@@ -1,11 +1,11 @@
 /**
- * Copyright (C) 2012 https://github.com/yelbota/adt-maven-plugin
+ * Copyright (C) 2017 Marvin Herman Froeder (marvin@marvinformatics.com)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ *         http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -28,7 +28,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
-@Mojo(name="command", defaultPhase = LifecyclePhase.PACKAGE)
+@Mojo(name = "command", defaultPhase = LifecyclePhase.PACKAGE)
 public class CommandAdtMojo extends UnpackAdtMojo {
 
     /**
@@ -38,8 +38,7 @@ public class CommandAdtMojo extends UnpackAdtMojo {
     protected String arguments;
 
     @Override
-    public void execute() throws MojoExecutionException, MojoFailureException
-    {
+    public void execute() throws MojoExecutionException, MojoFailureException {
         super.execute();
         prepareArguments();
 
@@ -50,19 +49,17 @@ public class CommandAdtMojo extends UnpackAdtMojo {
         finalArgs.add("-jar");
         finalArgs.add(adtFile.getAbsolutePath());
 
-        for (String s: StringUtils.split(arguments, " "))
+        for (String s : StringUtils.split(arguments, " "))
             finalArgs.add(s);
 
-        execute(finalArgs.toArray(new String[]{}));
+        execute(finalArgs.toArray(new String[] {}));
     }
 
-    protected void prepareArguments() throws MojoFailureException
-    {
+    protected void prepareArguments() throws MojoFailureException {
         // Override this method for arguments modification.
     }
 
-    public void execute(String[] args) throws MojoFailureException
-    {
+    public void execute(String[] args) throws MojoFailureException {
         try {
 
             getLog().debug(StringUtils.join(args, " "));
@@ -84,8 +81,7 @@ public class CommandAdtMojo extends UnpackAdtMojo {
                 // Oops.
                 throw failWith(
                         "adt fails with return code #" + code +
-                                ". Checkout official documentation here http://help.adobe.com/en_US/air/build/air_buildingapps.pdf"
-                );
+                                ". Checkout official documentation here http://help.adobe.com/en_US/air/build/air_buildingapps.pdf");
             }
 
         } catch (IOException e) {

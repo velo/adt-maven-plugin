@@ -1,11 +1,11 @@
 /**
- * Copyright (C) 2012 https://github.com/yelbota/adt-maven-plugin
+ * Copyright (C) 2017 Marvin Herman Froeder (marvin@marvinformatics.com)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ *         http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -25,49 +25,41 @@ import java.io.InputStreamReader;
 public class CleanStream extends Thread {
 
     public enum CleanStreamType {
-        INFO, DEBUG, ERROR     
+        INFO, DEBUG, ERROR
     }
-    
+
     private InputStream is;
     private CleanStreamType type = null;
     private Log log = null;
 
-    public CleanStream(InputStream is)
-    {
+    public CleanStream(InputStream is) {
         this.is = is;
     }
 
-    public CleanStream(InputStream is, Log log)
-    {
+    public CleanStream(InputStream is, Log log) {
         this.is = is;
         this.log = log;
     }
 
-    public CleanStream(InputStream is, Log log, CleanStreamType type)
-    {
+    public CleanStream(InputStream is, Log log, CleanStreamType type) {
         this.is = is;
         this.type = type;
         this.log = log;
     }
 
-    public void run()
-    {
-        try
-        {
+    public void run() {
+        try {
             InputStreamReader isr = new InputStreamReader(is);
             BufferedReader br = new BufferedReader(isr);
             String line = null;
 
-            while ((line = br.readLine()) != null)
-            {
-                if (log != null)
-                {
+            while ((line = br.readLine()) != null) {
+                if (log != null) {
                     if (type == null) {
 
                         log.info(line);
 
-                    }
-                    else {
+                    } else {
                         if (type == CleanStreamType.INFO) {
                             log.info(line);
                         } else if (type == CleanStreamType.DEBUG) {
@@ -78,9 +70,7 @@ public class CleanStream extends Thread {
                     }
                 }
             }
-        }
-        catch (IOException ioe)
-        {
+        } catch (IOException ioe) {
             ioe.printStackTrace();
         }
     }

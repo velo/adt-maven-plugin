@@ -1,11 +1,11 @@
 /**
- * Copyright (C) 2012 https://github.com/yelbota/adt-maven-plugin
+ * Copyright (C) 2017 Marvin Herman Froeder (marvin@marvinformatics.com)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ *         http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -51,17 +51,17 @@ public class DependencyAdtMojo extends AbstractAdtMojo {
         DependencyHelper dependencyHelper = new DependencyHelper() {
 
             @Override
-            protected String getDefaultArtifactId()  throws MojoFailureException  {
+            protected String getDefaultArtifactId() throws MojoFailureException {
                 return "air-sdk";
             }
 
             @Override
-            protected String getDefaultGroupId()  throws MojoFailureException  {
+            protected String getDefaultGroupId() throws MojoFailureException {
                 return "com.adobe.air";
             }
 
             @Override
-            protected String getDefaultVersion() throws MojoFailureException  {
+            protected String getDefaultVersion() throws MojoFailureException {
                 return sdkVersion;
             }
 
@@ -75,8 +75,7 @@ public class DependencyAdtMojo extends AbstractAdtMojo {
                 pluginArtifacts,
                 repositorySystem,
                 localRepository,
-                remoteRepositories
-        );
+                remoteRepositories);
 
         getLog().debug("No plugin dependency defined.");
 
@@ -91,13 +90,11 @@ public class DependencyAdtMojo extends AbstractAdtMojo {
 
         if (getVersionNumber(version) < 3.4) {
             return ZIP;
-        }
-        else {
+        } else {
 
             if (classifier.equals(OS_CLASSIFIER_WINDOWS)) {
                 return ZIP;
-            }
-            else if (classifier.equals(OS_CLASSIFIER_MAC)) {
+            } else if (classifier.equals(OS_CLASSIFIER_MAC)) {
                 return TBZ2;
             }
         }
@@ -109,7 +106,7 @@ public class DependencyAdtMojo extends AbstractAdtMojo {
         String preparedVersion = version.replaceAll("[^\\d.]", "");
         Pattern pattern = Pattern.compile("^(\\d+\\.\\d+).*");
         Matcher matcher = pattern.matcher(preparedVersion);
-        if(!matcher.matches()) {
+        if (!matcher.matches()) {
             getLog().debug("Invalid version string " + preparedVersion);
             return null;
         }

@@ -1,11 +1,11 @@
 /**
- * Copyright (C) 2012 https://github.com/yelbota/adt-maven-plugin
+ * Copyright (C) 2017 Marvin Herman Froeder (marvin@marvinformatics.com)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ *         http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -31,7 +31,7 @@ public class LoggerStub implements Logger {
 
     @Override
     public boolean isDebugEnabled() {
-        return false;  //To change body of implemented methods use File | Settings | File Templates.
+        return false; //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override
@@ -46,7 +46,7 @@ public class LoggerStub implements Logger {
 
     @Override
     public boolean isInfoEnabled() {
-        return false;  //To change body of implemented methods use File | Settings | File Templates.
+        return false; //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override
@@ -61,7 +61,7 @@ public class LoggerStub implements Logger {
 
     @Override
     public boolean isWarnEnabled() {
-        return false;  //To change body of implemented methods use File | Settings | File Templates.
+        return false; //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override
@@ -76,7 +76,7 @@ public class LoggerStub implements Logger {
 
     @Override
     public boolean isErrorEnabled() {
-        return false;  //To change body of implemented methods use File | Settings | File Templates.
+        return false; //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override
@@ -91,12 +91,12 @@ public class LoggerStub implements Logger {
 
     @Override
     public boolean isFatalErrorEnabled() {
-        return false;  //To change body of implemented methods use File | Settings | File Templates.
+        return false; //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override
     public int getThreshold() {
-        return 0;  //To change body of implemented methods use File | Settings | File Templates.
+        return 0; //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override
@@ -106,11 +106,11 @@ public class LoggerStub implements Logger {
 
     @Override
     public Logger getChildLogger(String s) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return null; //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override
     public String getName() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return null; //To change body of implemented methods use File | Settings | File Templates.
     }
 }

@@ -1,11 +1,11 @@
 /**
- * Copyright (C) 2012 https://github.com/yelbota/adt-maven-plugin
+ * Copyright (C) 2017 Marvin Herman Froeder (marvin@marvinformatics.com)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ *         http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -34,7 +34,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-@Mojo(name="package", defaultPhase = LifecyclePhase.PACKAGE)
+@Mojo(name = "package", defaultPhase = LifecyclePhase.PACKAGE)
 public class PackageAdtMojo extends CommandAdtMojo {
 
     /**
@@ -87,7 +87,6 @@ public class PackageAdtMojo extends CommandAdtMojo {
 
     @Parameter(property = "none")
     public String tsa;
-
 
     /**
      * Required for iOS packages (ipa*).
@@ -151,8 +150,7 @@ public class PackageAdtMojo extends CommandAdtMojo {
     public boolean sampler;
 
     @Override
-    public void execute() throws MojoExecutionException, MojoFailureException
-    {
+    public void execute() throws MojoExecutionException, MojoFailureException {
         Build build = project.getBuild();
 
         if (fileNamePattern == null) {
@@ -162,8 +160,7 @@ public class PackageAdtMojo extends CommandAdtMojo {
         if (applicationContent == null) {
             applicationContent = new File(
                     build.getDirectory(),
-                    build.getFinalName() + "." + project.getPackaging()
-            );
+                    build.getFinalName() + "." + project.getPackaging());
         }
 
         if (includesRoot == null) {
@@ -174,8 +171,7 @@ public class PackageAdtMojo extends CommandAdtMojo {
     }
 
     @Override
-    protected void prepareArguments() throws MojoFailureException
-    {
+    protected void prepareArguments() throws MojoFailureException {
         super.prepareArguments();
 
         validateConfiguration();
@@ -195,7 +191,7 @@ public class PackageAdtMojo extends CommandAdtMojo {
         if (aneDir.list().length > 0)
             args.addAll(getExtDirArguments(aneDir));
 
-        String[] argsArray = args.toArray(new String[]{});
+        String[] argsArray = args.toArray(new String[] {});
         getLog().info("Building package " + getFinalName());
 
         arguments = StringUtils.join(argsArray, " ");
@@ -205,7 +201,7 @@ public class PackageAdtMojo extends CommandAdtMojo {
 
         List<String> result = new ArrayList<String>();
 
-        for (String name: aneDir.list()) {
+        for (String name : aneDir.list()) {
             AneModel model = new AneModel(new File(aneDir, name));
             result.add(model.getId());
         }
@@ -259,8 +255,7 @@ public class PackageAdtMojo extends CommandAdtMojo {
         if (isUnsignedAirTarget()) {
 
             args.add("-prepare");
-        }
-        else {
+        } else {
 
             args.add("-package");
 
@@ -273,7 +268,7 @@ public class PackageAdtMojo extends CommandAdtMojo {
             }
         }
 
-        if(sampler && getVersionNumber(sdkVersion) >= 3.4) {
+        if (sampler && getVersionNumber(sdkVersion) >= 3.4) {
             args.add("-sampler");
         }
 
@@ -318,8 +313,7 @@ public class PackageAdtMojo extends CommandAdtMojo {
      * @param finalAppDescriptorFile mutated application descriptor
      * @return list of args
      */
-    public List<String> getMainArgs(File finalAppDescriptorFile) throws MojoFailureException
-    {
+    public List<String> getMainArgs(File finalAppDescriptorFile) throws MojoFailureException {
 
         List<String> args = new ArrayList<String>();
         File outputFile = new File(outputDirectory, getFinalName());
@@ -330,8 +324,7 @@ public class PackageAdtMojo extends CommandAdtMojo {
         return args;
     }
 
-    private String getFinalName() throws MojoFailureException
-    {
+    private String getFinalName() throws MojoFailureException {
         String ext;
 
         if (isiOSTarget()) {
@@ -453,8 +446,7 @@ public class PackageAdtMojo extends CommandAdtMojo {
         return target.indexOf("apk") > -1;
     }
 
-    private String getNativeDesktopFileExt(Boolean bundle) throws MojoFailureException
-    {
+    private String getNativeDesktopFileExt(Boolean bundle) throws MojoFailureException {
         String fullName = System.getProperty("os.name");
         String osName = fullName.toLowerCase();
 

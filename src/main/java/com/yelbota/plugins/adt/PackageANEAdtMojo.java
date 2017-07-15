@@ -1,11 +1,11 @@
 /**
- * Copyright (C) 2012 https://github.com/yelbota/adt-maven-plugin
+ * Copyright (C) 2017 Marvin Herman Froeder (marvin@marvinformatics.com)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ *         http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -36,38 +36,37 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-@Mojo(name="package-ane", defaultPhase = LifecyclePhase.PACKAGE)
+@Mojo(name = "package-ane", defaultPhase = LifecyclePhase.PACKAGE)
 public class PackageANEAdtMojo extends CommandAdtMojo {
 
     @Parameter(property = "build.adt.extensionDescriptor", required = true)
-	public File extensionDescriptor;
+    public File extensionDescriptor;
 
     @Parameter(property = "build.adt.extensionSwc", required = true)
-	public File extensionSwc;
+    public File extensionSwc;
 
     @Parameter(required = true)
-	public ArrayList<Platform> platforms;
+    public ArrayList<Platform> platforms;
 
     @Parameter
     public String finalName;
 
     @Override
-    protected void prepareArguments() throws MojoFailureException
-    {
+    protected void prepareArguments() throws MojoFailureException {
         Build build = project.getBuild();
 
-        if(platforms.size() < 1) {
+        if (platforms.size() < 1) {
             throw failWith("Expected at least one platform!");
         }
 
-        if(finalName == null)            
-            finalName = build.getFinalName() + ".ane";              
+        if (finalName == null)
+            finalName = build.getFinalName() + ".ane";
 
         File aneFile = new File(build.getDirectory(), finalName);
         File targetDir = aneFile.getParentFile();
         getLog().debug("ANE file = " + aneFile.getAbsolutePath());
         getLog().debug("Target dir = " + targetDir.getAbsolutePath());
-        if(!targetDir.exists()) {
+        if (!targetDir.exists()) {
             getLog().debug("Creating target directory");
             targetDir.mkdir();
         }
@@ -80,40 +79,39 @@ public class PackageANEAdtMojo extends CommandAdtMojo {
 
         for (Platform platform : platforms) {
             args.add("-platform");
-            args.add(platform.name);     
+            args.add(platform.name);
 
-            if(platform.options != null) {
+            if (platform.options != null) {
                 args.add("-platformoptions");
                 args.add(platform.options.getAbsolutePath());
             }
 
             args.add("-C");
-            args.add(platform.directory.getAbsolutePath());            
+            args.add(platform.directory.getAbsolutePath());
             args.add(".");
 
-            if(platform.requiresSWFExtraction()) {                
+            if (platform.requiresSWFExtraction()) {
                 try {
                     extractLibrarySwf(extensionSwc, platform.directory);
-                }
-                catch (Exception e) {
+                } catch (Exception e) {
                     throw failWith("Unable to extract library", e.getMessage());
-                }                                                    
+                }
             }
         }
 
-    	arguments = StringUtils.join(args.toArray(new String[]{}), " ");
+        arguments = StringUtils.join(args.toArray(new String[] {}), " ");
     }
 
     private void extractLibrarySwf(File swc, File destinationDir) throws Exception {
         ZipFile zipFile = new ZipFile(extensionSwc.getAbsolutePath());
         List headers = zipFile.getFileHeaders();
         FileHeader header;
-        for(int i = 0; i < headers.size(); i++) {
-            header = (FileHeader) headers.get(i);            
-            if(header.getFileName().equals("library.swf")) {
+        for (int i = 0; i < headers.size(); i++) {
+            header = (FileHeader) headers.get(i);
+            if (header.getFileName().equals("library.swf")) {
                 getLog().debug("Writing library.swf in " + destinationDir.getAbsolutePath());
                 zipFile.extractFile(header, destinationDir.getAbsolutePath());
-                return;       
+                return;
             }
         }
         throw new Exception("Could not find library.swf in " + swc.getAbsolutePath());
