@@ -1,19 +1,25 @@
-[![Build Status](https://travis-ci.org/${owner}/${name}.svg?branch=master)](https://travis-ci.org/${owner}/${name}?branch=master) 
-[![Coverage Status](https://coveralls.io/repos/github/${owner}/${name}/badge.svg?branch=master)](https://coveralls.io/github/${owner}/${name}?branch=master) 
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.marvinformatics/${name}/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.marvinformatics/${name}/) 
-[![Issues](https://img.shields.io/github/issues/${owner}/${name}.svg)](https://github.com/${owner}/${name}/issues) 
-[![Forks](https://img.shields.io/github/forks/${owner}/${name}.svg)](https://github.com/${owner}/${name}/network) 
-[![Stars](https://img.shields.io/github/stars/${owner}/${name}.svg)](https://github.com/${owner}/${name}/stargazers)
+# `adt-maven-plugin`
+
+[![Build Status](https://travis-ci.org/velo/adt-maven-plugin.svg?branch=master)](https://travis-ci.org/velo/adt-maven-plugin?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/velo/adt-maven-plugin/badge.svg?branch=master)](https://coveralls.io/github/velo/adt-maven-plugin?branch=master)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.marvinformatics.adt/adt-maven-plugin/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.marvinformatics.adt/adt-maven-plugin/)
+[![Issues](https://img.shields.io/github/issues/velo/adt-maven-plugin.svg)](https://github.com/velo/adt-maven-plugin/issues)
+[![Forks](https://img.shields.io/github/forks/velo/adt-maven-plugin.svg)](https://github.com/velo/adt-maven-plugin/network)
+[![Stars](https://img.shields.io/github/stars/velo/adt-maven-plugin.svg)](https://github.com/velo/adt-maven-plugin/stargazers)
+
+This is a fork of [fomkin/adt-maven-plugin](https://github.com/fomkin/adt-maven-plugin). This is based on `1.0.8`
+
+The major change is that this plugin is released to maven central, so no need to play around with `<repositories>` or `<pluginRepositories>`
 
 Build Adobe AIR applications with your Maven!
-================================================
+=============================================
 
 General purpose
 ---------------
 
 Some time ago, Adobe released AIR for mobile devices. There was a question: how to package AIR-application automatically? Flexmojos allows you to build only \*.air packages, so I have created the plugin which could work with platform dependent AIR SDK and additionally build packages for mobile devices. ***This plugin is not replacement of Flexmojos***. You still need Flexmojos to build SWF.
 
-Current status (1.0.7)
+Current status
 ----------------------
 
 * Building AIR, APK, IPA packages
@@ -26,8 +32,7 @@ Current status (1.0.7)
 Plans
 --------------------------------------------
 
-* Install to device mojo
-* Linux SDK artifact working over wine (just for fun :)
+* Keep cherry-picking anything new
 
 Quick start
 -----------------------------------------------
@@ -36,33 +41,13 @@ First, make sure that your project has `swf` packaging.
 
     <packaging>swf</packaging>
 
-Add repository with plugin and SDK artifacts into your POM
-
-    <pluginRepositories>
-        <pluginRepository>
-            <id>yelbota-dropbox-repo</id>
-            <url>http://dl.dropbox.com/u/36020926/maven/</url>
-            <snapshots><enabled>false</enabled></snapshots>
-            <releases><enabled>true</enabled></releases>
-        </pluginRepository>
-    </pluginRepositories>
-
-    <repositories>
-        <repository>
-            <id>yelbota-dropbox-repo</id>
-            <url>http://dl.dropbox.com/u/36020926/maven/</url>
-            <snapshots><enabled>false</enabled></snapshots>
-            <releases><enabled>true</enabled></releases>
-        </repository>
-    </repositories>
-
 Add `adt-maven-plugin` into plugins section
 
     <plugin>
     
-        <groupId>com.yelbota.plugins</groupId>
+        <groupId>com.marvinformatics.adt</groupId>
         <artifactId>adt-maven-plugin</artifactId>
-        <version>1.0.7</version>
+        <version>1.0</version>
         
         <executions>
           <execution>
@@ -135,7 +120,7 @@ You can configure signing with `build.adt.keystore`, `build.adt.storepass` and `
 If you want to use your own SDK package, place it into plugin dependencies. Be aware, that AIR SDK is platform dependent.
 
     <plugin>
-        <groupId>com.yelbota.plugins</groupId>
+        <groupId>com.marvinformatics.adt</groupId>
         <artifactId>adt-maven-plugin</artifactId>
         <version>1.0.7</version>
         <dependencies>
@@ -170,7 +155,7 @@ Run custom command
 You can run custom ADT command using `command` goal. 
 
     <plugin>
-        <groupId>com.yelbota.plugins</groupId>
+        <groupId>com.marvinformatics.adt</groupId>
         <artifactId>adt-maven-plugin</artifactId>
         <version>1.0.7</version>
         <configuration>
@@ -191,7 +176,7 @@ You can run custom ADT command using `command` goal.
 Examples
 -----------------------------------------------
 
-[https://github.com/yelbota/adt-maven-plugin/tree/master/src/it](https://github.com/yelbota/adt-maven-plugin/tree/master/src/it)
+[https://github.com/velo/adt-maven-plugin/tree/master/src/it](https://github.com/velo/adt-maven-plugin/tree/master/src/it)
 
 Foreign resources
 -----------------------------------------------
