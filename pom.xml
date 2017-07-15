@@ -31,7 +31,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <coveralls.token>92UGp0S8JL8fmtHtq2vhKHzAx2r3MAqAz</coveralls.token>
-    <java.version>1.8</java.version>
+    <java.version>1.7</java.version>
   </properties>
 
   <dependencies>
