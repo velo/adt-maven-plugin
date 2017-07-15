@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/velo/adt-maven-plugin.svg?branch=master)](https://travis-ci.org/velo/adt-maven-plugin?branch=master)
 [![Coverage Status](https://coveralls.io/repos/github/velo/adt-maven-plugin/badge.svg?branch=master)](https://coveralls.io/github/velo/adt-maven-plugin?branch=master)
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.marvinformatics.adt/adt-maven-plugin/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.marvinformatics.adt/adt-maven-plugin/)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.marvinformatics/adt-maven-plugin/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.marvinformatics/adt-maven-plugin/)
 [![Issues](https://img.shields.io/github/issues/velo/adt-maven-plugin.svg)](https://github.com/velo/adt-maven-plugin/issues)
 [![Forks](https://img.shields.io/github/forks/velo/adt-maven-plugin.svg)](https://github.com/velo/adt-maven-plugin/network)
 [![Stars](https://img.shields.io/github/stars/velo/adt-maven-plugin.svg)](https://github.com/velo/adt-maven-plugin/stargazers)
@@ -47,7 +47,7 @@ Add `adt-maven-plugin` into plugins section
 
     <plugin>
     
-        <groupId>com.marvinformatics.adt</groupId>
+        <groupId>com.marvinformatics</groupId>
         <artifactId>adt-maven-plugin</artifactId>
         <version>1.0</version>
         
@@ -122,9 +122,9 @@ You can configure signing with `build.adt.keystore`, `build.adt.storepass` and `
 If you want to use your own SDK package, place it into plugin dependencies. Be aware, that AIR SDK is platform dependent.
 
     <plugin>
-        <groupId>com.marvinformatics.adt</groupId>
+        <groupId>com.marvinformatics</groupId>
         <artifactId>adt-maven-plugin</artifactId>
-        <version>1.0.7</version>
+        <version>1.0</version>
         <dependencies>
             <dependency>
                 <groupId>com.adobe.air</groupId>
@@ -157,7 +157,7 @@ Run custom command
 You can run custom ADT command using `command` goal. 
 
     <plugin>
-        <groupId>com.marvinformatics.adt</groupId>
+        <groupId>com.marvinformatics</groupId>
         <artifactId>adt-maven-plugin</artifactId>
         <version>1.0.7</version>
         <configuration>
