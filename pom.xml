@@ -26,6 +26,7 @@
   <packaging>maven-plugin</packaging>
 
   <name>Adobe AIR Development tools Maven plugin</name>
+  <description>Some time ago, Adobe released AIR for mobile devices. There was a question: how to package AIR-application automatically? Flexmojos allows you to build only *.air packages, so I have created the plugin which could work with platform dependent AIR SDK and additionally build packages for mobile devices. This plugin is not replacement of Flexmojos. You still need Flexmojos to build SWF.</description>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
