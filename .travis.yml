@@ -1,11 +1,4 @@
 language: objective-c
 
-
-jdk:
-  - oraclejdk8
-
-install:
-  - mvn install dependency:go-offline -Pskip-formatter -DskipTests=true -fn -q
-
 script:
   - mvn clean install -Dinvoker.skip=true -Pci -B
