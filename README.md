@@ -11,6 +11,8 @@ This is a fork of [fomkin/adt-maven-plugin](https://github.com/fomkin/adt-maven-
 
 The major change is that this plugin is released to maven central, so no need to play around with `<repositories>` or `<pluginRepositories>`
 
+Air SDK can be downloaded from [Adobe AIR archived page](https://helpx.adobe.com/air/kb/archived-air-sdk-version.html).
+
 Build Adobe AIR applications with your Maven!
 =============================================
 
