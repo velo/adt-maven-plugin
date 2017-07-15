@@ -62,7 +62,7 @@ public class CommandAdtMojo extends UnpackAdtMojo {
     public void execute(String[] args) throws MojoFailureException {
         try {
 
-            getLog().debug(StringUtils.join(args, " "));
+            getLog().info("Executing: " + StringUtils.join(args, " "));
             Process process = Runtime.getRuntime().exec(args);
 
             CleanStream cleanError = new CleanStream(process.getErrorStream(),

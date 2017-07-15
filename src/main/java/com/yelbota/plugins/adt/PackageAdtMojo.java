@@ -295,8 +295,10 @@ public class PackageAdtMojo extends CommandAdtMojo {
             args.add("-storepass");
             args.add(storepass);
 
-            args.add("-tsa");
-            args.add(tsa);
+            if (tsa != null) {
+                args.add("-tsa");
+                args.add(tsa);
+            }
         }
 
         return args;
@@ -392,8 +394,8 @@ public class PackageAdtMojo extends CommandAdtMojo {
 
         if (getCertificateRequired()) {
             // Certificate required
-            if (storetype == null || storepass == null || keystore == null || tsa == null)
-                throw new AdtConfigurationException("Signing options (storetype, keystore, storepass, tsa) must be defined");
+            if (storetype == null || storepass == null || keystore == null)
+                throw new AdtConfigurationException("Signing options (storetype, keystore, storepass) must be defined");
             else if (!keystore.exists())
                 throw new AdtConfigurationException("Keystore file doesn't exists");
         }
